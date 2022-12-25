@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Giriş Yap</h2>
+<div mat-dialog-content class="mat-typography">
+
+  <div *ngIf="showSpinner">
+    <br>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <mat-form-field class="example-full-width">
+      <mat-label>Kullanıcı Adı veyaa E-Mail</mat-label>
+      <input matInput formControlName="userNameOrEmail">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Şifre</mat-label>
+      <input matInput type="text" formControlName="password">
+    </mat-form-field>
+
+    <div mat-dialog-actions align="end" >
+        <div>
+          <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid">Giriş Yap</button>
+        </div>
+      </div>
+  </form>
+</div>
+

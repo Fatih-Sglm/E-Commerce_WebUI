@@ -1,0 +1,55 @@
+<div class="row mb-3 align-items-center">
+  <div class="col-lg-6 mb-2 mb-lg-0">
+    <p class="text-sm text-muted mb-0">Showing 1-{{pagesize}} of {{ProductsResponse.data.count}} results</p>
+  </div>
+  <div class="col-lg-6">
+    <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
+      <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" *ngIf="!isLarge" (click)="setLargeElement()"><i class="fas fa-th-large"></i></a></li>
+      <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" *ngIf="isLarge" (click)="setSmallElement()"><i class="fas fa-th"></i></a></li>
+      <li class="list-inline-item">
+        <form>
+        <mat-form-field appearance="fill">
+          <mat-label>Favorite food</mat-label>
+          <mat-select [(value)]="selectedSort">
+            <mat-option></mat-option>
+          <mat-option [value]="sort.value" *ngFor="let sort of sorting" >
+            {{sort.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      </li>
+    </ul>
+  </div>
+</div>
+  <!-- PRODUCT-->
+  <div class="row">
+    <div [ngClass]="productClass" *ngFor="let product of Products;">
+        <div class="product text-center">
+          <div class="mb-3 position-relative">
+            <div class="badge text-white bg-"></div><a class="d-block"  routerLink="{{product.id}}"><img class="img-fluid w-75" src="{{product.catalogItemsHeaderImages[0]}}" alt="..."></a>
+            <div class="product-overlay">
+              <ul class="mb-0 list-inline">
+                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                <!-- <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" (click)="openModal()" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li> -->
+              </ul>
+            </div>
+          </div>
+          <h6> <a class="reset-anchor" href="detail.html">{{product.name}}</a></h6>
+          <p class="small text-muted">{{product.price | currency:"₺"}}</p>
+        </div>
+      </div>
+    </div>
+    
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center justify-content-lg-end">
+        <li class="page-item mx-1"><button class="page-link" [ngStyle]="{'cursor' : ProductsResponse.data.hasPrevious ? 'pointer' : 'not-allowed'}" [disabled]="!ProductsResponse.data.hasPrevious" (click)="ChangePage(1)" ><span aria-hidden="true">First</span></button></li>
+        <li class="page-item mx-1"><button class="page-link" [ngStyle]="{'cursor' : ProductsResponse.data.hasPrevious ? 'pointer' : 'not-allowed'}" [disabled]="!ProductsResponse.data.hasPrevious" (click)="PreviousPage()"  aria-label="Previous"><span aria-hidden="true">«</span></button></li>
+        <li class="page-item mx-1" *ngFor="let page of pageList;"><a class="page-link" routerLinkActive="active"  routerLink="/products" [queryParams]="{ page: page}">{{page}}</a></li>
+        <!-- <li class="page-item mx-1"><a class="page-link" routerLink="/products" [queryParams]="{ page: 2}">2</a></li> -->
+        <li class="page-item ms-1"><button class="page-link" [ngStyle]="{'cursor' : ProductsResponse.data.hasNext? 'pointer' : 'not-allowed'}" [disabled]="!ProductsResponse.data.hasNext" (click)="nextPage()" aria-label="Next"><span aria-hidden="true">»</span></button></li>
+        <li class="page-item ms-1"><button class="page-link" [ngStyle]="{'cursor' : ProductsResponse.data.hasNext? 'pointer' : 'not-allowed'}" [disabled]="!ProductsResponse.data.hasNext" (click)="ChangePage(totalPageCount)" aria-label="Next"><span aria-hidden="true">Last</span></button></li>
+
+      </ul>
+    </nav> 

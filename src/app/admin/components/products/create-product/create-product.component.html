@@ -1,0 +1,112 @@
+<div class="pagetitle">
+  <h1>Form Layouts</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item">Forms</li>
+      <li class="breadcrumb-item active">Layouts</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+<section class="section">
+  <div class="row">
+
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Floating labels Form</h5>
+          <Form [formGroup]="formGroup" (ngSubmit)="submit(formGroup.value)" class="row g-3">
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingName" formControlName="name">
+                <label for="floatingName">Ürün Adı</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingPassword" formControlName="folderPath">
+                <label for="floatingPassword">Resmin Kaydedileceği Klasör Adı</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingEmail" formControlName="description">
+                <label for="floatingEmail">Ürün Açıklaması</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="number" step=".01"  class="form-control" id="floatingPassword" formControlName="price">
+                <label for="floatingPassword">Ürün Fiyatı</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <div mat-form-field appearance="fill" class="form-control">
+                  <mat-select formControlName="catalogBrandId">
+                    <mat-option *ngFor="let item of brands"  [value]="item.id">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+                <label for="catalogBrand">Ürün Markası</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <div mat-form-field class="form-control">
+                  <mat-select formControlName="catalogTypeId" >
+                    <mat-option *ngFor="let item of types"  [value]="item.id">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+                <label style="font-size:15px ;" for="catalogBrand">Ürün Tipi</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+                <div class="upload-container">
+                  <div style=" text-align: center;" class="border-container">
+                    <div  class="icons fa-4x">
+                      <i  class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
+                      <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
+                      <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+                    </div>
+                    <div style="display: flex;justify-content: center;">
+                      <p>Ürünlere &nbsp;</p>
+                      <p><ngx-file-drop  dropZoneClassName="upload-container" contentClassName="" dropZoneLabel="Drop files here" accept=".png , .jpg" (onFileDrop)="dropped($event)">
+                        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                          <a type="button" (click)="openFileSelector()">buradan</a>
+                        </ng-template>
+                      </ngx-file-drop></p>
+                      <p> &nbsp; resim ekleyebilirsiniz.</p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="upload-table" *ngIf="files">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Eklenen Resim yada Resimler</th>
+                          </tr>
+                        </thead>
+                        <tbody class="upload-name-style">
+                          <tr *ngFor="let item of files; let i=index">
+                            <td>{{ item.relativePath }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <button  class="btn btn-primary">Submit</button>
+          </Form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- (click)="CreateProduct(name.value , description.value , price.value , catalogBrandId.value , catalogTypeId.value ,  folderPath.value )" -->

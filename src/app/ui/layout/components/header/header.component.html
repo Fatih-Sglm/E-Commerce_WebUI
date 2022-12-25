@@ -1,0 +1,63 @@
+<header class="header bg-white">
+    <div class="container px-lg-3">
+      <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand"><span
+            class="fw-bold text-uppercase text-dark">Boutique</span></a>
+        <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <!-- Link--><a class="nav-link" routerLinkActive="active-link" routerLink="">Home</a>
+            </li>
+            <li class="nav-item">
+              <!-- Link--><a class="nav-link" routerLinkActive="active-link" routerLink="products">Products</a>
+            </li>
+            <li class="nav-item">
+              <!-- Link--><a class="nav-link" routerLinkActive="active-link" routerLink="products/detail/1">Product
+                detail</a>
+            </li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+              <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a
+                  class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a
+                  class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a
+                  class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a
+                  class="dropdown-item border-0 transition-link" routerLink="/login">admin login</a><a
+                  class="dropdown-item border-0 transition-link" routerLink="/admin">admin</a></div>
+  
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" routerLink="basket"> <i
+                  class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">({{basketService.BasketProductCount== null ?"0" : basketService.BasketProductCount }})</small></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#!"> <i class="far fa-heart me-1"></i><small
+                  class="text-gray fw-normal"></small></a></li>
+            <li class="nav-item" (click)="openLoginModal()" ><a class="nav-link" style="cursor:pointer;"  *ngIf="!authService.isAuthenticated"> <i
+                  class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
+                  <!--data-bs-toggle="modal"
+                data-bs-target="#modalLoginForm"-->
+            <!-- <li class="nav-item"><a class="nav-link" style="cursor:pointer;"  *ngIf="authService.isAuthenticated"> <i class="fas fa-user me-1 text-gray fw-normal"></i>{{authService.name}}</a></li> -->
+            <li class="nav-item">
+              <div>
+                <div class="dropdown">
+                  <button class="btn btn-light dropdown-toggle" *ngIf="authService.isAuthenticated"   type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user me-1 text-gray fw-normal"></i> Hesabım
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item"  (click)="logout()">Çıkış Yap</a>
+                  </div>
+                  
+                </div>
+                
+              </div>
+        </li>
+        </ul>
+  
+    </div>
+    </nav>
+    </div>
+  </header> 
