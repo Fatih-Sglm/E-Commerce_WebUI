@@ -19,14 +19,14 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
 
     this.spinner.show(SpinnerType.BallSpinFade);
-    debugger;
+    
     if(!isAuthenticated ){
       this.toasterService.message("Lütfen Giriş Yapınız" , "Yetkisiz Giriş" , {
         toastrMessageType : ToastrMessageType.Warning,
         toastrPosition : ToastrPosition.TopRight,
         timeout : 1.5
       });
-      debugger;
+      
       this.router.navigate(["/"], { queryParams : {returnUrl : state.url}});
       this.spinner.hide(SpinnerType.BallSpinFade);
       return false;

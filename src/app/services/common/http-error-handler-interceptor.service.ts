@@ -58,7 +58,7 @@ export class HttpErrorHandlerInterceptorServices implements HttpInterceptor {
           });
           break;
         case HttpStatusCode.NotFound:
-          debugger;
+          
           this.toastrService.message(customeError.errors[0], "Sayfa bulunamadı!", {
             toastrMessageType: ToastrMessageType.Warning,
             toastrPosition: ToastrPosition.TopRight,

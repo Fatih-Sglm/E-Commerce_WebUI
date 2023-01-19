@@ -15,7 +15,7 @@ export class SidebarService {
   setState(){
     debugger
     this.state = !this.state;
-    debugger;
+    
   }
   
 }

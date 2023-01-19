@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   {
     this.sidebarService.setState();
     this.sideBarState = this.sidebarService.getState();
-    debugger;
+    
   }
 
 }

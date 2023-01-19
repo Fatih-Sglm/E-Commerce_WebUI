@@ -22,7 +22,9 @@ hideSpinner(spinnerNameType :SpinnerType){
 }
 
 export enum SpinnerType{
-  BallScaleMultiple = "s1",
-  SquareJellyBox = "s2",
-  BallSpinFade = "s3"
+  BallScaleMultiple = "ball-scale-multiple",
+  SquareJellyBox = "square-jelly-box",
+  BallSpinFade = "ball-spin-fade",
+  Search = "search",
+  Pulse = "pulse"
 }

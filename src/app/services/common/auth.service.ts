@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   logout(){
-    debugger;
+    
     localStorage.clear();
     window.location.reload();
   }

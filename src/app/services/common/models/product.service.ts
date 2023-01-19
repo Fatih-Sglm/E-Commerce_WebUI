@@ -4,6 +4,7 @@ import { Brands } from 'src/app/contracts/brands/brand';
 import { NoContent } from 'src/app/contracts/common/nocontent';
 import { Paginate } from 'src/app/contracts/common/paginate';
 import { ResponseModel } from 'src/app/contracts/common/response-model';
+import { Sorted } from 'src/app/contracts/common/Sorted';
 import { CreateProduct } from 'src/app/contracts/products/create-product';
 import { ProductDetailModel } from 'src/app/contracts/products/product-detail-model';
 import { ProductModel } from 'src/app/contracts/products/product-model';
@@ -17,12 +18,12 @@ export class ProductService {
 
   constructor(private httpclientService: HttpClientService) { }
 
-  async getProduct(page: number , pageSize : number , succesCallbak?: () => void) : Promise<ResponseModel<Paginate<ProductModel>>>
+  async getProduct(page: number , pageSize : number , sorted?:Sorted , succesCallbak?: () => void) : Promise<ResponseModel<Paginate<ProductModel>>>
   {
     const observable : Observable<ResponseModel<Paginate<ProductModel>>> = this.httpclientService.get<ResponseModel<Paginate<ProductModel>>>({
       controller: "catalog",
       action :'GetCatalogList',
-      queryString :`Page=${page}&PageSize=${pageSize}`,
+      queryString :`${sorted ? `Sort.Field=${sorted.Field}&Sort.Dir=${sorted.Dir}` : "" }&Page=${page}&PageSize=${pageSize}`,
     });
     return await firstValueFrom(observable);
   };

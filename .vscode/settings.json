@@ -1,0 +1,11 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript.format.semicolons": "insert",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.fontSize": 16,
+  "html.format.wrapAttributes": "auto",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
+}

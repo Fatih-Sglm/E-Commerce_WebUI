@@ -56,7 +56,7 @@ export class CreateProductComponent extends BaseComponent implements OnInit {
 
  async submit(value:CreateProduct)
   {
-    debugger;
+    
     this.showSpinner(SpinnerType.BallSpinFade);
     const response :ResponseModel<NoContent> = await this.productService.createProduct(this.addValueFormData(value) , 
     () => {this.hideSpinner(SpinnerType.BallSpinFade)});
@@ -89,7 +89,7 @@ export class CreateProductComponent extends BaseComponent implements OnInit {
   // {
   //   const createProduct : CreateProduct = new CreateProduct();
   //   createProduct.name = name;createProduct.price = parseFloat(price);
-  //   debugger;
+  //   
   // }
 
 }

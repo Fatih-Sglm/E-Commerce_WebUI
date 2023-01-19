@@ -19,7 +19,6 @@ import { FooterComponent } from './components/footer/footer.component';
     ],
     imports: [
         CommonModule,
-        NgxSpinnerModule,
         RouterModule.forChild([
             { path: "", component: LayoutComponent }
         ]),
